@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Timer</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app" aria-labelledby="app-title">
+      <h1 id="app-title">タイマー</h1>
+
+      <section class="display" aria-live="polite" aria-atomic="true">
+        <div class="clock" id="clock" aria-label="アナログカウントダウン">
+          <div class="ring" aria-hidden="true"></div>
+          <div class="face">
+            <div class="hand minute" id="hand-minute" aria-hidden="true"></div>
+            <div class="hand second" id="hand-second" aria-hidden="true"></div>
+            <div class="center" aria-hidden="true"></div>
+          </div>
+        </div>
+        <div id="time" class="sr-only" role="timer" aria-label="残り時間">00:00</div>
+      </section>
+
+      <form id="time-form" class="time-form" autocomplete="off">
+        <label class="sr-only" for="minutes">分</label>
+        <input id="minutes" name="minutes" type="number" inputmode="numeric" min="0" max="999" step="1" placeholder="分" aria-label="分" />
+
+        <span class="colon">:</span>
+
+        <label class="sr-only" for="seconds">秒</label>
+        <input id="seconds" name="seconds" type="number" inputmode="numeric" min="0" max="59" step="1" placeholder="秒" aria-label="秒" />
+
+        <button id="set-btn" type="submit" class="btn secondary" title="入力した時間を設定">設定</button>
+      </form>
+
+      <div class="controls">
+        <button id="start-btn" class="btn primary" title="開始 (Space)">開始</button>
+        <button id="pause-btn" class="btn" title="一時停止 (Space)" disabled>一時停止</button>
+        <button id="reset-btn" class="btn danger" title="リセット (R)" disabled>リセット</button>
+      </div>
+
+      <details class="help">
+        <summary>使い方</summary>
+        <ul>
+          <li>分と秒を入力して「設定」を押す</li>
+          <li>「開始」でカウントダウン開始（Space キーでも可）</li>
+          <li>「一時停止」で停止／再開（Space キー）</li>
+          <li>「リセット」で初期値に戻す（R キー）</li>
+        </ul>
+      </details>
+    </main>
+
+    <script src="script.js" defer></script>
+  </body>
+  </html>
